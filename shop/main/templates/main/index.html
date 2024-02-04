@@ -117,8 +117,79 @@
       .my-3 .col {
         flex: 0 0 48%; /* Adjust the percentage as needed */
       } 
-      
-    </style>
+      .container {
+    max-width: 1400px; /* Adjust as needed */
+    margin: auto;
+    
+    padding: 20px;
+  }
+  .card {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 100%; /* Ensures all cards are the same height */
+  }
+  .image-container {
+    height: 200px; /* Fixed image container height */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card-img-top {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ensures the image fits within the container without stretching */
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+  }
+  .card-text {
+    font-size: .875rem;
+    margin-bottom: 1rem;
+  }
+  .price-container {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .btn {
+    margin: .125rem;
+  }
+
+
+  .hero-section {
+  position: relative;
+  color: black;
+  text-align: center;
+  background-color: white;
+  padding: 50px 0; /* Reduced padding to decrease container height */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.headline {
+  display: flex; /* Align the children of headline using flexbox */
+  align-items: center; /* Vertically center align the flex items */
+  justify-content: center; /* Horizontally center the flex items */
+  gap: 20px; /* Adjust the space between the text and the image */
+}
+
+.headline-part {
+  font-size: 5em; /* Large font size for the headline text */
+  white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.sneaker-image {
+  width: auto; /* Width can be auto since height is defined */
+  height: 150px; /* Adjust the height to your preference */
+  object-fit: contain; /* Keep the aspect ratio of the image */
+}
+</style>
+    
 
     
     <!-- Custom styles for this template -->
@@ -141,40 +212,6 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme"
-              type="button"
-              aria-expanded="false"
-              data-bs-toggle="dropdown"
-              aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            Light
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            Dark
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
-            Auto
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
 
     
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -258,7 +295,7 @@
               </option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          <button type="submit" class="btn btn-outline-secondary">Submit</button>
         </form>
       </div>
   
@@ -275,14 +312,14 @@
               </option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          <button type="submit" class="btn btn-outline-secondary">Submit</button>
         </form>
       </div>
   
       <!-- Form 3: Sort by Country -->
-      <div class="col-md-4">
+      <div class="col-md-4" >
         {% csrf_token %}
-        <form action="{% url 'main:producer' %}" method="get" class="mb-3">
+        <form action="{% url 'main:producer' %}" method="get" class="mb-3" >
           <label class="form-label">Sort by Country:</label>
           <select class="form-select" name="country_shoes">
             <option value="">--Please choose an option--</option>
@@ -292,25 +329,75 @@
               </option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          <button type="submit" class="btn btn-outline-secondary">Submit</button>
         </form>
       </div>
   
     </div>
   </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background-image: url({% static 'shoes_background.png' %})"; background-size: cover; background-position: center;">
+  
+  <div class="hero-section">
+    <div class="headline" >
+      <span class="headline-part">feel the</span>
+      <img src="{% static 'grey_background.webp' %}" alt="Sneaker Image" class="sneaker-image">
+      <span class="headline-part">unreal</span>
+    </div>
+  </div>
+
+
+<!-- <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"  style=" background-image: {% static 'grey_background.webp' %}" >
   <div class="col-md-6 p-lg-5 mx-auto my-5">
-    <h1 class="display-3 fw-bold" style="color: #ffffff;">Stride in a style</h1>
+    <h1 class="display-3 fw-bold" style="color:#5c5a5a;">Stride in a style</h1>
     <h3 class="fw-normal mb-3" style="color:white;">Discover Comfort and Style in Every Step with Sneakers</h3>
     <div class="d-flex gap-3 justify-content-center lead fw-normal">
     </div>
   </div>
+</div> -->
   <!-- Other divs -->
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    {% for item in items %}
+      <div class="col-md-4 d-flex align-items-stretch" style="margin-bottom:20px;">
+        <div class="card text-bg-light my-3 mx-2" style="width: 100%; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <div class="card-body d-flex flex-column">
+            <div class="image-container mb-3">
+              <img src="{{ item.photo.url }}" alt="{{ item.name }}" class="card-img-top">
+            </div>
+            <h5 class="card-title">
+              <a href="{% url 'main:detail' item.id %}" class="link-secondary">{{ item.name }}</a></h5>
+            <p class="card-text">{{ item.pre_description }}</p>
+            <div class="mt-auto">
+              <div class="price-container mb-2" style="font-size: medium; font-weight: 400;">${{ item.price }}</div>
+              <div class="d-grid gap-2">
+                <form action="{% url 'cart:cart_add' item.id %}" method="post">
+                  {{ cart_product_form }}
+                  {% csrf_token %}
+                  <div class="button-container">
+                      {% if request.user.username == 'admin' %}
+                          <a href="{% url 'main:change' item.id %}" class="btn btn-sm btn-outline-secondary">Change</a>
+                          <a href="{% url 'main:delete' item.id %}" class="btn btn-sm btn-outline-secondary">Delete</a> 
+                      {% else %}
+                      <input class="btn btn-outline-secondary btn-sm" type="submit" value="Add to Cart">
+                      {% endif %}
+                  </div>
+      
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
+
+
  
- <div class="row row-cols-1 row-cols-md-3 g-4">
+ <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for item in items %}
       <div class="col">
         <div class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
@@ -340,54 +427,14 @@
         </div>
       </div>
     {% endfor %}
-  </div>
+  </div> -->
 
   </main>
 <footer class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
-      <small class="d-block mb-3 text-body-secondary">&copy; 2017–2023</small>
+    <div class="row" style="text-align: center;">
+      <small class="d-block mb-3 text-body-secondary">&copy; 2023–2024</small>
+      <h5>Made by <a href="https://github.com/kojabu">kojabu</a></h5>
     </div>
-    <div class="col-6 col-md">
-      <h5>Features</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Resources</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Resources</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>About</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-        <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-      </ul>
-    </div>
-  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
